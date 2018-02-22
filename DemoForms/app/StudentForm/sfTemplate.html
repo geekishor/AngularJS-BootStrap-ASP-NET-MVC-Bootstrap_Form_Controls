@@ -1,0 +1,124 @@
+﻿<div class="modal-header">
+    <h1>Create New Student</h1>
+</div>
+
+<div class="modal-body">
+    <form role="form" class="form-horizontal">
+        <fieldset>
+            <legend>Basic Information</legend>
+            <div class="form-group">
+                <label for="fullName" class="col-sm-3 control-label">Name</label>
+                <div class="col-sm-9">
+                    <input type="text" id="fullName" name="fullName" class="form-control"
+                           ng-model="updatedStudent.fullName" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dateOfBirth" class="col-sm-3 control-label">Date of Birth</label>
+                <div class="col-sm-9" uib-datepicker ng-model="updatedStudent.dob" datepicker-options="options"></div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="time" class="col-sm-3 control-label">Time</label>
+                <div class="col-sm-9" uib-timepicker ng-model="updatedStudent.time" datepicker-options="options"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="topCountries" class="col-sm-3 control-label">Top Countries</label>
+                <div class="col-sm-9">
+                    <input type="text" id="topCountries" name="topCountries" class="form-control" ng-model="updatedStudent.topCountries"
+                           uib-typeahead="country for country in topCountries | filter:$viewValue" />
+                </div>
+            </div>
+
+<div class="form group col-sm-offset-3">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="isEligible" ng-model="updatedStudent.isEligible" />
+            <span uib-tooltip="You need to be eligible student for further processing!"
+                    tooltip-placement="top"
+                    tooltip-trigger="mouseenter">
+                Is student eligible?
+            </span>
+        </label>
+    </div>
+</div>
+
+            <div class="form-group" uib-collapse="!updatedStudent.isEligible">
+                <label for="detailDescription" class="control-label col-sm-3">
+                    For eligible students...
+                </label>
+                <div class="col-sm-9">
+                    <textarea name="des" id="des" class="form-control" rows="5" cols="40"
+                              ng-model="updatedStudent.description"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="objective" class="col-sm-3 control-label">Objective</label>
+                <div class="col-sm-9">
+                    <textarea name="objective" id="objective" class="form-control" rows="5" cols="40" ng-model="updatedStudent.objective"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="department" class="col-sm-3 control-label">Department</label>
+                <div class="col-sm-9">
+                    <select name="department" id="department" class="form-control"
+                            ng-model="updatedStudent.department"
+                            ng-options="dept for dept in departments"></select>
+                </div>
+            </div>
+        </fieldset>
+
+        <br />
+
+        <fieldset>
+            <legend>Hobbies</legend>
+            <div class="form-group">
+                <div class="col-sm-3">
+
+                </div>
+                <div class="col-sm-9">
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="hobbiesTravel" ng-model="updatedStudent.hobbiesTravel" />Travelling</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="hobbiesPhotography" ng-model="updatedStudent.hobbiesPhotography" />Photography</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="hobbiesGaming" ng-model="updatedStudent.hobbiesGaming" />Gaming</label>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Gender</legend>
+            <div class="form-group">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <div class="radio">
+                        <label><input type="radio" name="gender" value="Male" ng-model="updatedStudent.gender" /> Male</label><br />
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="gender" value="Female" ng-model="updatedStudent.gender" /> Female</label><br />
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <div class="col-sm-offset-3 col-sm-9">
+        <div class="col-sm-offset-3 col-sm-9">
+            <input type="button" class="btn btn-default" value="Cancel" ng-click="cancelForm()" />
+            <input type="submit" class="btn btn-primary" value="Submit" ng-click="submitForm()" />
+        </div>
+    </div>
+</div>
